@@ -5,6 +5,6 @@ if status is-interactive
     set -gx DOTNET_ROOT "/usr/share/dotnet"
   end
 
-  fish_add_path -gP "$DOTNET_ROOT"
-  fish_add_path -gP "$HOME/.dotnet/tools"
+  fish_add_path -g "$DOTNET_ROOT"
+  fish_add_path -g "$HOME/.dotnet/tools"
 end

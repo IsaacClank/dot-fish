@@ -1,5 +1,13 @@
-if status is-interactive
-  if test -d ~/.local/bin
-    fish_add_path -ag ~/.local/bin
-  end
+if not status is-interactive
+  return
 end
+
+if test -d ~/.local/bin
+  fish_add_path -g ~/.local/bin
+end
+
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+
