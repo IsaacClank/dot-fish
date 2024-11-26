@@ -1,3 +1,3 @@
 if status is-interactive; and type -q zoxide
-    zoxide init fish | source
+    zoxide init --cmd 'cd' fish | source
 end
