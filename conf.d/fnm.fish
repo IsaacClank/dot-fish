@@ -1,5 +1,4 @@
-if status is-interactive; and test -d "$HOME/.local/share/fnm"
-  fish_add_path -g "$HOME/.local/share/fnm"
-  fnm env | source
+if status is-interactive; and type -q fnm;
+  fnm env --use-on-cd --shell fish | source
 end
 
