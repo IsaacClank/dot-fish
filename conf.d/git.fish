@@ -1,41 +1,34 @@
 if status is-interactive; and type -q git;
-  function gitss --description 'alias gitss git status --short'
-    command git status --short $argv
+  abbr -a gitaa git add :/
+
+  abbr -a gitb git branch
+  abbr -a gitbD git branch -D
+  abbr -a gitbn git rev-parse --abbrev-ref HEAD
+
+  abbr -a gitc git commit
+  abbr -a gitcan git commit --amend --no-edit
+  abbr -a gitcmsg git commit -m
+
+  abbr -a gitf git fetch
+  abbr -a gitfa git fetch --all
+
+  abbr -a gits git status
+  abbr -a gitss git status --short
+
+  abbr -a gitpu git push
+  abbr -a gitpuu git push -u origin
+
+  abbr -a gitre git restore
+  abbr -a gitresa git restore --staged :/
+
+  abbr -a gitsw git switch
+  abbr -a gitswc git switch -c
+
+  function git_log --description 'alias gitlo git log --oneline --decorate --format=format:"%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset"'
+    command git log --oneline --decorate --format=format:'%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset'
   end
 
-  function gitaa --description 'alias gaa git add :/'
-    command git add :/ $argv
-  end
-
-  function gitb --description 'alias gitb git branch'
-    command git branch :/ $argv
-  end
-
-  function gitcmsg --description 'alias gitcmsg git commit -m'
-    command git commit -m $argv
-  end
-
-  function gitcan --description 'alias gitcan git commit --amend --no-edit'
-    command git commit --amend --no-edit $argv
-  end
-
-  function gitf --description 'alias gitf git fetch'
-    command git fetch $argv
-  end
-
-  function gitfa --description 'alias gitfa git fetch --all'
-    command git fetch --all $argv
-  end
-
-  function gitlo --description 'alias gitlo git log --oneline --decorate --format=format:"%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset"'
-    command git log --oneline --decorate --format=format:'%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset' $argv
-  end
-
-  function gitlgo --description 'log --oneline --graph --decorate --format=format:"%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset"'
+  function git_log_g --description 'log --oneline --graph --decorate --format=format:"%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset"'
     command git log --oneline --graph --decorate --format=format:'%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset'
-  end
-
-  function gitsw --description 'alias gsw git switch'
-    command git switch $argv
   end
 end
