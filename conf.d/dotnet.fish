@@ -6,5 +6,5 @@ if status is-interactive
   end
 
   fish_add_path -g "$DOTNET_ROOT"
-  fish_add_path -g "$HOME/.dotnet/tools"
+  fish_add_path -g "$DOTNET_ROOT/tools"
 end
