@@ -31,4 +31,21 @@ if status is-interactive; and type -q git;
   function git_log_g --description 'log --oneline --graph --decorate --format=format:"%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset"'
     command git log --oneline --graph --decorate --format=format:'%C(yellow)%h%Creset %s %Cblue%cr%Creset %Cgreen%an%Cred%d%Creset'
   end
+
+  function git_erase_branch --description 'Delete a given branch remotely and locally' -a branch_name
+    if test $branch_name = 'main'
+      echo 'Cannot erase main'
+      return
+    end
+
+    read -lP "About to erase $branch_name locally and remotely. Continue? (y/n): " confirmation
+
+    if test $confirmation != 'y'
+      return
+    end
+
+    command git push -d origin $branch_name
+    command git switch -
+    command git branch -D $branch_name
+  end
 end
