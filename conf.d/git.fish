@@ -48,4 +48,18 @@ if status is-interactive; and type -q git;
     command git switch -
     command git branch -D $branch_name
   end
+
+  if type -q fzf;
+    function git_branch_fzf
+      git branch -a --sort='refname' --sort='-HEAD' --format='%(refname:short)' | fzf --delimiter 'origin/' --accept-nth '{1}{2}' --tmux center --prompt 'Branch > '
+    end
+
+    function git_switch_fzf
+      set -f branch (git_branch_fzf)
+      if test "$branch" = ''
+        return
+      end
+      git switch $branch
+    end
+  end
 end
