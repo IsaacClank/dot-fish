@@ -11,3 +11,5 @@ if type -q nvim;
   set -gx EDITOR 'nvim'
 end
 
+set --global fish_key_bindings fish_default_key_bindings
+set -U fish_greeting ''
