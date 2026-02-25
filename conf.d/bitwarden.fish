@@ -10,6 +10,10 @@ if status is-interactive;
 
   function bw-get-pass
     set -l selected_item (echo $BW_ITEMS | jq -r 'map({name, "username": (.login.username)} | "\\(.name) | \\(.username)")[]' | fzf)
+    if test -z $selected_item
+      return
+    end
+
     set -l selected_item_segments (string split ' | ' $selected_item)
     echo $BW_ITEMS | jq -r "map(select(.name == \"$selected_item_segments[1]\" and .login.username == \"$selected_item_segments[2]\") | .login.password) | first" | fish_clipboard_copy
   end
