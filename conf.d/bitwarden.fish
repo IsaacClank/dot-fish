@@ -1,6 +1,10 @@
 if status is-interactive;
-  function bw --wraps='flatpak run --command=bw com.bitwarden.desktop' --description 'alias bw flatpak run --command=bw com.bitwarden.desktop'
+  if not type -q bw; and type -q flatpak;
+    set -f cmd 'flatpak run --command=bw com.bitwarden.desktop'
+
+    function bw --wraps='flatpak run --command=bw com.bitwarden.desktop' --description 'alias bw flatpak run --command=bw com.bitwarden.desktop'
       flatpak run --command=bw com.bitwarden.desktop $argv
+    end
   end
 
   function bw-sync
